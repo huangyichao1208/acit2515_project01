@@ -4,10 +4,9 @@ from audit import Audit
 
 def main():
     if len(sys.argv) not in (2,3):
-        raise ValueError (
-            "Usage: system_auditor_cli.py input.json [output.json]"
-        )
-
+        print ("Usage: system_auditor_cli.py input.json [output.json]")
+        return
+        
     input_file = sys.argv[1]
 
     with open (input_file, "r") as file:
