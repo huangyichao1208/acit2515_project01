@@ -30,6 +30,19 @@ def test_memory_check_measure(fake_system):
 
     assert check.measure() == 16.0
 
+def test_cpu_check (fake_system):
+    specification = {
+        "type":"cpu",
+        "requirement":4,
+        "description": "At least 4 logical cpus"
+    }
+    check = checks.create_check (specification)
+
+    assert isinstance (check, checks.CPUCheck)
+    result = check.run()
+    assert result.requirement == specification["requirement"]
+    assert result.description == specification["description"]
+    assert check.measure() == 8
 
 def test_cpu_check_measure(fake_system):
     """CPU measurement returns the logical CPU count."""
